@@ -1,0 +1,19 @@
+.found-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+	border: 2px solid $darkBlue;
+	border-radius: 10px;
+	background-color: $orange;
+	&__card {
+		border: 2px solid $darkBlue
+	}
+
+	@include tablet {
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+		column-gap: 20px;
+	}
+}

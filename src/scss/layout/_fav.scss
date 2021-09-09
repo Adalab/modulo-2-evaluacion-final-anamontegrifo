@@ -1,0 +1,32 @@
+.fav-list {
+	display: flex;
+	flex-direction: column;
+	border: 2px solid $darkBlue;
+	border-radius: 10px;
+	background-color: $grey;
+	&__menu {
+		display: flex;
+		justify-content: space-around;
+	}
+	&__title {
+		font-size: 20px;
+		color: $darkBlue;
+	}
+	&__reset {
+		width: 30px;
+		height: 30px;
+		border-radius: 5px;
+		background-color: $mediumBlue;
+		color: $grey;
+	}
+	&__card {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		height: 140px;
+		&--image {
+			width: 60px;
+			border: 2px solid $orange;
+		}
+	}
+}

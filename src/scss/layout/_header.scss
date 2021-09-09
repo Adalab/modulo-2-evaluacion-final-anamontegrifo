@@ -1,1 +1,8 @@
-
+.header {
+	background-color: $darkBlue;
+&__title{
+	font-family: $special;
+	font-size: 2rem;
+	color: $grey;
+}
+}

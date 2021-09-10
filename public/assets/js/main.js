@@ -23,9 +23,8 @@ function getTheSearchResult() {
 		.then((response) => response.json())
 		.then((data) => {
 			series = data;
-			console.log(series);
 
-			//función para imprimir los datos de la búsqueda
+			//function to print the search data
 			addCards();
 		});
 }
@@ -39,9 +38,9 @@ const defaultImage =
 
 function addCards() {
 	for (const card of series) {
-		console.log(card);
 		let newCard = document.createElement('div');
-		newCard.classList.add('found-list__card', 'favourite');
+		newCard.classList.add('found-list__card', 'js-foundCard');
+		newCard.id = card.show.id;
 		let imageCard = document.createElement('img');
 
 		if (card.show.image === null) {
@@ -60,6 +59,7 @@ function addCards() {
 		newCard.appendChild(titleCard);
 		listContainer.appendChild(newCard);
 	}
+	listenToTheCards();
 }
 
 let favourites = [];
@@ -75,7 +75,7 @@ function listenToTheCards() {
 function handleFavCards(event) {
 	const selectedCard = parseInt(event.currentTarget.id);
 
-	console.log(selectedCard);
+	console.log(event.currentTarget);
 
 	// const clickedCard = series.find((item) => {
 	// 	return item.id === selectedCard;

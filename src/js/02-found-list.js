@@ -5,9 +5,9 @@ const defaultImage =
 
 function addCards() {
 	for (const card of series) {
-		console.log(card);
 		let newCard = document.createElement('div');
-		newCard.classList.add('found-list__card', 'favourite');
+		newCard.classList.add('found-list__card', 'js-foundCard');
+		newCard.id = card.show.id;
 		let imageCard = document.createElement('img');
 
 		if (card.show.image === null) {
@@ -26,4 +26,5 @@ function addCards() {
 		newCard.appendChild(titleCard);
 		listContainer.appendChild(newCard);
 	}
+	listenToTheCards();
 }

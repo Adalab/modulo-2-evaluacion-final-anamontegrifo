@@ -11,7 +11,7 @@ function listenToTheCards() {
 function handleFavCards(event) {
 	const selectedCard = parseInt(event.currentTarget.id);
 
-	console.log(selectedCard);
+	console.log(event.currentTarget);
 
 	// const clickedCard = series.find((item) => {
 	// 	return item.id === selectedCard;

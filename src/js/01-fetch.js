@@ -23,8 +23,9 @@ function getTheSearchResult() {
 		.then((data) => {
 			for (const item of data) {
 				series = item.show;
-
+				console.log(series);
 				//función para imprimir los datos de la búsqueda
+				addCards();
 			}
 		});
 }

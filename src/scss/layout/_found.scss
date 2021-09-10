@@ -9,6 +9,12 @@
 	&__card {
 		border: 2px solid $darkBlue
 	}
+	&__image {
+		width: 150px;
+	}
+	&__title {
+		font-weight: 700;
+	}
 
 	@include tablet {
 		flex-direction: row;

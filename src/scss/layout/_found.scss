@@ -3,12 +3,15 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 10px;
-	border: 2px solid $darkBlue;
+	// border: 2px solid $darkBlue;
 	border-radius: 10px;
-	background-color: $orange;
+	// background-color: $orange;
 	&__card {
-		border: 2px solid $darkBlue
-	}
+		border: 2px solid $darkBlue;
+		margin: 10px 0;
+		padding: 20px;
+		}
+	
 	&__image {
 		width: 150px;
 	}
@@ -18,8 +21,12 @@
 
 	@include tablet {
 		flex-direction: row;
-		justify-content: center;
+		justify-content:flex-start;
 		flex-wrap: wrap;
 		column-gap: 20px;
 	}
+}
+
+.favourite {
+	background-color: $orange;
 }

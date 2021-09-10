@@ -18,6 +18,7 @@ function completeUrl() {
 function getTheSearchResult() {
 	let url = completeUrl();
 
+	listContainer.innerHTML = '';
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
@@ -32,6 +33,10 @@ function getTheSearchResult() {
 		});
 }
 
+btnSearch.addEventListener('click', getTheSearchResult);
+
+'use strict';
+
 // List container element variable found
 const listContainer = document.querySelector('.found-list');
 const defaultImage =
@@ -39,13 +44,14 @@ const defaultImage =
 
 function addCards() {
 	let newCard = document.createElement('div');
-	newCard.classList.add('found-list__card');
+	newCard.classList.add('found-list__card', 'favourite');
 	let imageCard = document.createElement('img');
+
 	if (series.image === null) {
 		imageCard.src =
 			'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 	} else {
-		imageCard.src = series.image.original;
+		imageCard.src = series.image.medium;
 	}
 
 	imageCard.setAttribute('class', 'found-list__image');
@@ -58,10 +64,6 @@ function addCards() {
 	newCard.appendChild(titleCard);
 	listContainer.appendChild(newCard);
 }
-
-btnSearch.addEventListener('click', getTheSearchResult);
-
-'use strict';
 
 'use strict';
 

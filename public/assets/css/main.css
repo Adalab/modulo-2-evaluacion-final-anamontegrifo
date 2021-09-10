@@ -178,11 +178,11 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border: 2px solid #00334E;
-  border-radius: 10px;
-  background-color: #EE6F57; }
+  border-radius: 10px; }
   .found-list__card {
-    border: 2px solid #00334E; }
+    border: 2px solid #00334E;
+    margin: 10px 0;
+    padding: 20px; }
   .found-list__image {
     width: 150px; }
   .found-list__title {
@@ -190,9 +190,12 @@ body {
   @media all and (min-width: 768px) {
     .found-list {
       flex-direction: row;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
       -moz-column-gap: 20px;
       column-gap: 20px; } }
+
+.favourite {
+  background-color: #EE6F57; }
 
 /*# sourceMappingURL=main.css.map */

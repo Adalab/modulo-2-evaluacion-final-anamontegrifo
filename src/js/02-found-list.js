@@ -5,7 +5,8 @@ const defaultImage =
 
 function addCards() {
 	let newCard = document.createElement('div');
-	newCard.classList.add('found-list__card', 'favourite');
+	newCard.id = series.id;
+	newCard.classList.add('found-list__card', 'js-foundCard');
 	let imageCard = document.createElement('img');
 
 	if (series.image === null) {
@@ -24,4 +25,7 @@ function addCards() {
 	listContainer.appendChild(newCard);
 	newCard.appendChild(titleCard);
 	listContainer.appendChild(newCard);
+
+	//meter la función que escucha los eventos sobre las tarjetas
+	listenToTheCards();
 }

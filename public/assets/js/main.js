@@ -24,8 +24,8 @@ function getTheSearchResult() {
 		.then((data) => {
 			for (const item of data) {
 				series = item.show;
-				console.log(series);
-				console.log(series.name);
+				// console.log(series);
+				// console.log(series.name);
 
 				//función para imprimir los datos de la búsqueda
 				addCards();
@@ -42,7 +42,8 @@ const defaultImage =
 
 function addCards() {
 	let newCard = document.createElement('div');
-	newCard.classList.add('found-list__card', 'favourite');
+	newCard.id = series.id;
+	newCard.classList.add('found-list__card', 'js-foundCard');
 	let imageCard = document.createElement('img');
 
 	if (series.image === null) {
@@ -61,6 +62,24 @@ function addCards() {
 	listContainer.appendChild(newCard);
 	newCard.appendChild(titleCard);
 	listContainer.appendChild(newCard);
+
+	//meter la función que escucha los eventos sobre las tarjetas
+	listenToTheCards();
+}
+
+let favourites = [];
+
+function listenToTheCards() {
+	const listenedCards = document.querySelectorAll('.js-foundCard');
+
+	for (const eachCard of listenedCards) {
+		eachCard.addEventListener('click', handleFavCards);
+	}
+}
+
+function handleFavCards(event) {
+	console.log(event.target);
+	console.log(event.currentTarget);
 }
 
 'use strict';

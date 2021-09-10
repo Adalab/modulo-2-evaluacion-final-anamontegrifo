@@ -24,8 +24,8 @@ function getTheSearchResult() {
 		.then((data) => {
 			for (const item of data) {
 				series = item.show;
-				console.log(series);
-				console.log(series.name);
+				// console.log(series);
+				// console.log(series.name);
 
 				//función para imprimir los datos de la búsqueda
 				addCards();

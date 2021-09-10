@@ -22,14 +22,11 @@ function getTheSearchResult() {
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
-			for (const item of data) {
-				series = item.show;
-				// console.log(series);
-				// console.log(series.name);
+			series = data;
+			console.log(series);
 
-				//función para imprimir los datos de la búsqueda
-				addCards();
-			}
+			//función para imprimir los datos de la búsqueda
+			addCards();
 		});
 }
 
@@ -41,30 +38,28 @@ const defaultImage =
 	'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
 function addCards() {
-	let newCard = document.createElement('div');
-	newCard.id = series.id;
-	newCard.classList.add('found-list__card', 'js-foundCard');
-	let imageCard = document.createElement('img');
+	for (const card of series) {
+		console.log(card);
+		let newCard = document.createElement('div');
+		newCard.classList.add('found-list__card', 'favourite');
+		let imageCard = document.createElement('img');
 
-	if (series.image === null) {
-		imageCard.src =
-			'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-	} else {
-		imageCard.src = series.image.medium;
+		if (card.show.image === null) {
+			imageCard.src =
+				'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+		} else {
+			imageCard.src = card.show.image.medium;
+		}
+		imageCard.setAttribute('class', 'found-list__image');
+		let titleCard = document.createElement('h2');
+		titleCard.setAttribute('class', 'found-list__title');
+		let titleContent = document.createTextNode(card.show.name);
+		titleCard.appendChild(titleContent);
+		newCard.appendChild(imageCard);
+		listContainer.appendChild(newCard);
+		newCard.appendChild(titleCard);
+		listContainer.appendChild(newCard);
 	}
-
-	imageCard.setAttribute('class', 'found-list__image');
-	let titleCard = document.createElement('h2');
-	titleCard.setAttribute('class', 'found-list__title');
-	let titleContent = document.createTextNode(series.name);
-	titleCard.appendChild(titleContent);
-	newCard.appendChild(imageCard);
-	listContainer.appendChild(newCard);
-	newCard.appendChild(titleCard);
-	listContainer.appendChild(newCard);
-
-	//meter la función que escucha los eventos sobre las tarjetas
-	listenToTheCards();
 }
 
 let favourites = [];

@@ -22,14 +22,11 @@ function getTheSearchResult() {
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
-			for (const item of data) {
-				series = item.show;
-				// console.log(series);
-				// console.log(series.name);
+			series = data;
+			console.log(series);
 
-				//función para imprimir los datos de la búsqueda
-				addCards();
-			}
+			//función para imprimir los datos de la búsqueda
+			addCards();
 		});
 }
 

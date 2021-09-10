@@ -24,28 +24,34 @@ function getTheSearchResult() {
 			for (const item of data) {
 				series = item.show;
 				console.log(series);
+				console.log(series.name);
+
 				//función para imprimir los datos de la búsqueda
 				addCards();
 			}
 		});
 }
 
-btnSearch.addEventListener('click', getTheSearchResult);
-
-'use strict';
-
 // List container element variable found
 const listContainer = document.querySelector('.found-list');
+const defaultImage =
+	'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
 function addCards() {
 	let newCard = document.createElement('div');
 	newCard.classList.add('found-list__card');
 	let imageCard = document.createElement('img');
-	imageCard.src = 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+	if (series.image === null) {
+		imageCard.src =
+			'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+	} else {
+		imageCard.src = series.image.original;
+	}
+
 	imageCard.setAttribute('class', 'found-list__image');
 	let titleCard = document.createElement('h2');
 	titleCard.setAttribute('class', 'found-list__title');
-	let titleContent = document.createTextNode('Título');
+	let titleContent = document.createTextNode(series.name);
 	titleCard.appendChild(titleContent);
 	newCard.appendChild(imageCard);
 	listContainer.appendChild(newCard);
@@ -53,15 +59,9 @@ function addCards() {
 	listContainer.appendChild(newCard);
 }
 
-// const newItem = document.createElement('li');
-// console.log(newItem); // Devuelve "<li></li>"
+btnSearch.addEventListener('click', getTheSearchResult);
 
-// // Ahora creamos algo de contenido
-// const newContent = document.createTextNode('Item nuevo');
-
-// // Y se lo añadimos a nuestro <li>
-// newItem.appendChild(newContent);
-// console.log(newItem); // Devuelve "<li>Item nuevo</li>"
+'use strict';
 
 'use strict';
 

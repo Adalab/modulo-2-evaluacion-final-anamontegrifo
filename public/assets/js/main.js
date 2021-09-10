@@ -73,23 +73,22 @@ function listenToTheCards() {
 }
 
 function handleFavCards(event) {
-	const selectedCard = parseInt(event.currentTarget.id);
+	const selectedCardId = parseInt(event.currentTarget.id);
 
-	console.log(event.currentTarget);
+	const clickedCard = series.find((card) => {
+		return card.show.id === selectedCardId;
+	});
 
-	// const clickedCard = series.find((item) => {
-	// 	return item.id === selectedCard;
-	// });
+	const alreadyExist = favourites.findIndex((index) => {
+		return index.id === selectedCardId;
+	});
 
-	// const alreadyExist = favourites.findIndex((index) => {
-	// 	return index.id === selectedCard;
-	// });
-
-	// if (alreadyExist < 0) {
-	// 	favourites.push(clickedCard);
-	// } else {
-	// 	favourites.splice(alreadyExist, 1);
-	// }
+	if (alreadyExist < 0) {
+		favourites.push(clickedCard);
+	} else {
+		favourites.splice(alreadyExist, 1);
+	}
+	console.log(favourites);
 }
 
 'use strict';

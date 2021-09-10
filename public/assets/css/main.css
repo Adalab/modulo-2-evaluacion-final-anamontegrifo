@@ -148,10 +148,7 @@ body {
 
 .fav {
   display: flex;
-  flex-direction: column;
-  border: 2px solid #00334E;
-  border-radius: 10px;
-  background-color: #F6F5F5; }
+  flex-direction: column; }
   .fav__menu {
     display: flex;
     justify-content: space-around; }
@@ -176,6 +173,9 @@ body {
   .fav-list__image {
     width: 60px;
     border: 2px solid #EE6F57; }
+
+.closed {
+  display: none; }
 
 .found-list {
   display: flex;

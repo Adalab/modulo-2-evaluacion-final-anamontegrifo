@@ -1,9 +1,6 @@
 .fav {
 	display: flex;
 	flex-direction: column;
-	border: 2px solid $darkBlue;
-	border-radius: 10px;
-	background-color: $grey;
 	&__menu {
 		display: flex;
 		justify-content: space-around;
@@ -35,4 +32,6 @@
 		}
 	}
 
-	
+	.closed {
+		display: none;
+	}

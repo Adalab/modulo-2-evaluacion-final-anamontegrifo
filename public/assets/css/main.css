@@ -139,6 +139,14 @@ a {
 body {
   font-family: "Urbanist", sans-serif; }
 
+.favourite {
+  background-color: #EE6F57;
+  color: #F6F5F5; }
+
+.estandar {
+  background-color: #F6F5F5;
+  color: #145374; }
+
 .header {
   background-color: #00334E; }
   .header__title {
@@ -205,9 +213,5 @@ body {
       flex-wrap: wrap;
       -moz-column-gap: 20px;
       column-gap: 20px; } }
-
-.favourite {
-  background-color: #145374;
-  color: #F6F5F5; }
 
 /*# sourceMappingURL=main.css.map */

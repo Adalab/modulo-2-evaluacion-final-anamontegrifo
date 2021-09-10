@@ -18,7 +18,7 @@ function completeUrl() {
 function getTheSearchResult() {
 	let url = completeUrl();
 
-	listContainer.innerHTML = '';
+	// listContainer.innerHTML = '';
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
@@ -36,10 +36,31 @@ const listContainer = document.querySelector('.found-list');
 const defaultImage =
 	'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
+function isFavourite(card) {
+	const favFound = favourites.find((fav) => {
+		return fav.show.id === card.show.id;
+	});
+	if (favFound === undefined) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 function addCards() {
+	let favClass = '';
+	listContainer.innerHTML = '';
+
 	for (const card of series) {
+		const isFav = isFavourite(card);
+
+		if (isFav) {
+			favClass = 'favourite';
+		} else {
+			favClass = 'estandar';
+		}
 		let newCard = document.createElement('div');
-		newCard.classList.add('found-list__card', 'js-foundCard');
+		newCard.classList.add('found-list__card', 'js-foundCard', `${favClass}`);
 		newCard.id = card.show.id;
 		let imageCard = document.createElement('img');
 
@@ -96,6 +117,7 @@ function handleFavCards(event) {
 	}
 	AddContentFavCards();
 	console.log(favourites);
+	addCards();
 }
 
 //Add content to favourites section
@@ -103,7 +125,7 @@ function AddContentFavCards() {
 	favContainer.innerHTML = '';
 
 	for (const card of favourites) {
-		let newCard = document.createElement('div');
+		let newCard = document.createElement('li');
 		newCard.classList.add('fav-list__card', 'js-favCard');
 		newCard.id = card.show.id;
 
@@ -131,7 +153,6 @@ function AddContentFavCards() {
 
 function reset() {
 	favourites = [];
-	favSection.innerHTML = '';
 }
 
 resetBtn.addEventListener('click', reset);

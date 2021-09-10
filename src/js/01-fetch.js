@@ -18,7 +18,7 @@ function completeUrl() {
 function getTheSearchResult() {
 	let url = completeUrl();
 
-	listContainer.innerHTML = '';
+	// listContainer.innerHTML = '';
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {

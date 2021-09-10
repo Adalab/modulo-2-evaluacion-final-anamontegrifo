@@ -32,6 +32,7 @@ function handleFavCards(event) {
 	}
 	AddContentFavCards();
 	console.log(favourites);
+	addCards();
 }
 
 //Add content to favourites section
@@ -39,7 +40,7 @@ function AddContentFavCards() {
 	favContainer.innerHTML = '';
 
 	for (const card of favourites) {
-		let newCard = document.createElement('div');
+		let newCard = document.createElement('li');
 		newCard.classList.add('fav-list__card', 'js-favCard');
 		newCard.id = card.show.id;
 
@@ -67,7 +68,6 @@ function AddContentFavCards() {
 
 function reset() {
 	favourites = [];
-	favSection.innerHTML = '';
 }
 
 resetBtn.addEventListener('click', reset);

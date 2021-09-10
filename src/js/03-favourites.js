@@ -1,12 +1,17 @@
 let favourites = [];
 
+// Fav container element variable found
+const favContainer = document.querySelector('.fav-list');
+
+//Listener function
 function listenToTheCards() {
 	const listenedCards = document.querySelectorAll('.js-foundCard');
 	for (const eachCard of listenedCards) {
 		eachCard.addEventListener('click', handleFavCards);
-		eachCard.addEventListener('click', addFavCards);
 	}
 }
+
+//Add cards to favourites array
 function handleFavCards(event) {
 	const selectedCardId = parseInt(event.currentTarget.id);
 	console.log(selectedCardId);
@@ -23,14 +28,12 @@ function handleFavCards(event) {
 	} else {
 		favourites.splice(alreadyExist, 1);
 	}
+	AddContentFavCards();
 	console.log(favourites);
 }
 
-// Fav container element variable found
-const favContainer = document.querySelector('.fav-list');
-
-//Add favorites function
-function addFavCards() {
+//Add content to favourites section
+function AddContentFavCards() {
 	favContainer.innerHTML = '';
 	for (const card of favourites) {
 		let newCard = document.createElement('div');

@@ -7,18 +7,18 @@ function listenToTheCards() {
 		eachCard.addEventListener('click', addFavCards);
 	}
 }
-
 function handleFavCards(event) {
 	const selectedCardId = parseInt(event.currentTarget.id);
+	console.log(selectedCardId);
 	const clickedCard = series.find((card) => {
 		return card.show.id === selectedCardId;
 	});
 
 	const alreadyExist = favourites.findIndex((index) => {
-		return index.id === selectedCardId;
+		return index.show.id === selectedCardId;
 	});
 
-	if (alreadyExist < 0) {
+	if (alreadyExist === -1) {
 		favourites.push(clickedCard);
 	} else {
 		favourites.splice(alreadyExist, 1);
@@ -31,6 +31,7 @@ const favContainer = document.querySelector('.fav-list');
 
 //Add favorites function
 function addFavCards() {
+	favContainer.innerHTML = '';
 	for (const card of favourites) {
 		let newCard = document.createElement('div');
 		newCard.classList.add('fav-list__card', 'js-favCard');

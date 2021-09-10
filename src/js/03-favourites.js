@@ -11,15 +11,15 @@ function listenToTheCards() {
 function handleFavCards(event) {
 	const selectedCard = parseInt(event.currentTarget.id);
 
-	console.log(typeof selectedCard);
+	console.log(selectedCard);
 
-	const clickedCard = series.find((item) => {
-		return item.id === selectedCard;
-	});
+	// const clickedCard = series.find((item) => {
+	// 	return item.id === selectedCard;
+	// });
 
-	const alreadyExist = favourites.findIndex((index) => {
-		return index.id === selectedCard;
-	});
+	// const alreadyExist = favourites.findIndex((index) => {
+	// 	return index.id === selectedCard;
+	// });
 
 	// if (alreadyExist < 0) {
 	// 	favourites.push(clickedCard);

@@ -5,18 +5,9 @@ const favContainer = document.querySelector('.fav-list');
 const favSection = document.querySelector('.js-fav');
 const resetBtn = document.querySelector('.js-reset');
 
-//Listener function
-function listenToTheCards() {
-	const listenedCards = document.querySelectorAll('.js-foundCard');
-	for (const eachCard of listenedCards) {
-		eachCard.addEventListener('click', handleFavCards);
-	}
-}
-
 //Add cards to favourites array
 function handleFavCards(event) {
 	const selectedCardId = parseInt(event.currentTarget.id);
-	console.log(selectedCardId);
 	const clickedCard = series.find((card) => {
 		return card.show.id === selectedCardId;
 	});
@@ -31,8 +22,15 @@ function handleFavCards(event) {
 		favourites.splice(alreadyExist, 1);
 	}
 	AddContentFavCards();
-	console.log(favourites);
 	addCards();
+	console.log(favourites);
+	setLocalStorage();
+}
+
+function setLocalStorage() {
+	const stringFav = JSON.stringify(favourites);
+	console.log(stringFav);
+	localStorage.setItem('favourites', stringFav);
 }
 
 //Add content to favourites section
@@ -66,8 +64,9 @@ function AddContentFavCards() {
 	listenToTheCards();
 }
 
-function reset() {
-	favourites = [];
-}
-
-resetBtn.addEventListener('click', reset);
+// function reset() {
+// 	console.log(favContainer.innerHTML);
+// 	if (favContainer.innerHTML !== '') {
+// 	}
+// }
+// resetBtn.addEventListener('click', reset);

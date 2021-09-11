@@ -1,3 +1,10 @@
+const form = document.querySelector('.form');
+
+function preventDefault(event) {
+	event.preventDefault();
+}
+form.addEventListener('submit', preventDefault);
+
 'use strict';
 
 //Search variables
@@ -83,13 +90,6 @@ function addCards() {
 	listenToTheCards();
 }
 
-let favourites = [];
-
-// Fav elements variable found
-const favContainer = document.querySelector('.fav-list');
-const favSection = document.querySelector('.js-fav');
-const resetBtn = document.querySelector('.js-reset');
-
 //Listener function
 function listenToTheCards() {
 	const listenedCards = document.querySelectorAll('.js-foundCard');
@@ -98,10 +98,16 @@ function listenToTheCards() {
 	}
 }
 
+let favourites = [];
+
+// Fav elements variable found
+const favContainer = document.querySelector('.fav-list');
+const favSection = document.querySelector('.js-fav');
+const resetBtn = document.querySelector('.js-reset');
+
 //Add cards to favourites array
 function handleFavCards(event) {
 	const selectedCardId = parseInt(event.currentTarget.id);
-	console.log(selectedCardId);
 	const clickedCard = series.find((card) => {
 		return card.show.id === selectedCardId;
 	});
@@ -116,8 +122,15 @@ function handleFavCards(event) {
 		favourites.splice(alreadyExist, 1);
 	}
 	AddContentFavCards();
-	console.log(favourites);
 	addCards();
+	console.log(favourites);
+	setLocalStorage();
+}
+
+function setLocalStorage() {
+	const stringFav = JSON.stringify(favourites);
+	console.log(stringFav);
+	localStorage.setItem('favourites', stringFav);
 }
 
 //Add content to favourites section
@@ -151,11 +164,12 @@ function AddContentFavCards() {
 	listenToTheCards();
 }
 
-function reset() {
-	favourites = [];
-}
-
-resetBtn.addEventListener('click', reset);
+// function reset() {
+// 	console.log(favContainer.innerHTML);
+// 	if (favContainer.innerHTML !== '') {
+// 	}
+// }
+// resetBtn.addEventListener('click', reset);
 
 'use strict';
 

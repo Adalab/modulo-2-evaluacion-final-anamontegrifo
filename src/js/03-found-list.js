@@ -49,3 +49,11 @@ function addCards() {
 	}
 	listenToTheCards();
 }
+
+//Listener function
+function listenToTheCards() {
+	const listenedCards = document.querySelectorAll('.js-foundCard');
+	for (const eachCard of listenedCards) {
+		eachCard.addEventListener('click', handleFavCards);
+	}
+}

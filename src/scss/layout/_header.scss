@@ -19,7 +19,7 @@
 		height: 60px;
 		margin-right: 10px;
 		@include tablet {
-			height: 100px;
+			height: 80px;
 		}
 	}
 	&__title {
@@ -35,8 +35,10 @@
 		box-sizing: border-box;
 		border-radius: 5px;
 		padding: 2px 5px;
+		margin-right: 5px;
 		height: 25px;
 		color: $darkBlue;
+		outline-color: $red;
 	}
 	&__btn {
 		border: none;

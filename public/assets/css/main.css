@@ -173,7 +173,7 @@ body {
     margin-right: 10px; }
     @media all and (min-width: 768px) {
       .header__logo {
-        height: 100px; } }
+        height: 80px; } }
   .header__title {
     font-family: "Tourney", cursive;
     font-size: 22px;
@@ -185,8 +185,10 @@ body {
     box-sizing: border-box;
     border-radius: 5px;
     padding: 2px 5px;
+    margin-right: 5px;
     height: 25px;
-    color: #00334E; }
+    color: #00334E;
+    outline-color: #F8485E; }
   .header__btn {
     border: none;
     border-radius: 5px;
@@ -279,11 +281,35 @@ body {
       -moz-column-gap: 20px;
       column-gap: 20px; } }
 
-.footer-section {
+.footer {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 5px;
   position: fixed;
   bottom: 0;
   width: 100vw;
+  padding: 10px;
   background-color: #145374;
-  color: #F6F5F5; }
+  color: #F6F5F5;
+  font-size: 12px; }
+  .footer__name {
+    grid-column: 1;
+    grid-row: 1; }
+  .footer__text {
+    grid-column: 1;
+    grid-row: 2; }
+  .footer__link {
+    text-align: end;
+    color: #F6F5F5;
+    grid-column: 2;
+    grid-row: 2; }
+    .footer__link:active {
+      color: #F8485E; }
+  @media all and (min-width: 768px) {
+    .footer {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      font-size: 14px; } }
 
 /*# sourceMappingURL=main.css.map */

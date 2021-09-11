@@ -1,7 +1,36 @@
-.footer-section {
+.footer {
+	display: grid; 
+	grid-template-columns: 3fr 2fr;
+	grid-template-rows: 1fr 1fr;
+	grid-row-gap: 5px;
 	position: fixed;
-	bottom:0;
+	bottom: 0;
 	width: 100vw;
+	padding: 10px;
 	background-color: $mediumBlue;
 	color: $grey;
+	font-size: 12px;
+	&__name {
+		grid-column: 1;
+		grid-row: 1;
+	}
+	&__text {
+		grid-column: 1;
+		grid-row: 2;
+	}
+	&__link {
+		text-align: end;
+		color: $grey;
+		grid-column: 2;
+		grid-row: 2;
+		&:active {
+      color: $red;
+		}
+	}
+	@include tablet {
+	grid-template-columns:  1fr;
+	grid-template-rows: 1fr 1fr;
+	font-size: 14px;
+
+	}
 }

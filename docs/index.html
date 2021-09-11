@@ -19,22 +19,19 @@
 <body>
 
 	<header class="header">
-		<h1 class="header__title">Buscador de series</h1>
-		<form action="">
-			<input type="text" class="js-inputSearch" id="search" name="search" placeholder="Busca por título">
-			<input class="js-btnSearch" type="button" value="Busca">
+		<div class="header__identity">
+			<img class="header__logo" src="./assets/images/tvretro-01.png" alt="retro TV">
+			<h1 class="header__title">Buscador de series</h1>
+		</div>
+
+		<form class="form" action="">
+			<input type="text" class="header__input js-inputSearch" id="search" name="search" placeholder="Busca por título">
+			<input class="header__btn js-btnSearch" type="button" value="Buscar">
 		</form>
 	</header>
 	<main class="main">
 
 		<section class="js-fav fav">
-			<div class="fav__menu">
-				<h2 class="fav__title">Tus series favoritas</h2>
-				<button class="fav__reset js-reset"><i class="fas fa-trash-alt"></i></button>
-			</div>
-			<ul class="fav-list">
-			</ul>
-
 		</section>
 		<section class="found-list">
 			<!-- <div class="found-list__card">
@@ -47,10 +44,11 @@
 
 
 	</main>
-	<footer>
-		<p>Evaluación final módulo Javascript</p>
-		<p>Ana Montegrifo</p>
-		<a href="https://github.com/Adalab/modulo-2-evaluacion-final-anamontegrifo">Repo en Github</a>
+	<footer class="footer">
+		<p class="footer__name">Ana Montegrifo</p>
+		<p class="footer__text">Evaluación final JS - Adalab</p>
+		<a class="footer__link" target="_blank" href="https://github.com/Adalab/modulo-2-evaluacion-final-anamontegrifo">Repo
+			en Github <i class="fab fa-github-alt"></i></a>
 	</footer>
 
 	<script type="text/javascript" src="./assets/js/main.js"></script>

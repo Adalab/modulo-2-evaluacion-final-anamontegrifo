@@ -1,6 +1,5 @@
 //Reset favourites
 
-console.log(favourites);
 function reset() {
 	favourites = [];
 	favSection.innerHTML = '';

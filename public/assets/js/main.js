@@ -127,6 +127,24 @@ function handleFavCards(event) {
 	addCards();
 }
 
+function deleteFavIcons(event) {
+	const selectedIconId = parseInt(event.currentTarget.id);
+	const clickedIcon = favourites.find((card) => {
+		return card.show.id === selectedIconId;
+	});
+
+	const alreadyExist = favourites.findIndex((index) => {
+		return index.show.id === selectedIconId;
+	});
+
+	if (alreadyExist !== -1) {
+		favourites.splice(alreadyExist, 1);
+	}
+	setLS();
+	AddContentFavCards();
+	addCards();
+}
+
 //Add content to favourites section
 function AddContentFavCards() {
 	favSection.innerHTML = '';
@@ -170,19 +188,29 @@ function AddContentFavCards() {
 		let titleContent = document.createTextNode(card.show.name);
 		titleCard.appendChild(titleContent);
 
+		let iconCard = document.createElement('i');
+		iconCard.setAttribute('class', 'fas fa-times-circle js-icon');
+		iconCard.id = card.show.id;
 		newCard.appendChild(imageCard);
 		newCard.appendChild(titleCard);
+		newCard.appendChild(iconCard);
+
 		newList.appendChild(newCard);
 		favSection.appendChild(newList);
 
+		//Listener del reset
 		const resetBtn = document.querySelector('.js-reset');
 		resetBtn.addEventListener('click', reset);
+
+		//Listener de borrar favoritos en los iconos
+		const favIcons = document.querySelectorAll('.js-icon');
+		for (const icon of favIcons) {
+			icon.addEventListener('click', deleteFavIcons);
+		}
 	}
 
 	listenToTheCards();
 }
-
-//<i class="fas fa-heart"></i>
 
 function setLS() {
 	localStorage.setItem('favourites', JSON.stringify(favourites));
@@ -196,7 +224,6 @@ function getLS() {
 
 //Reset favourites
 
-console.log(favourites);
 function reset() {
 	favourites = [];
 	favSection.innerHTML = '';

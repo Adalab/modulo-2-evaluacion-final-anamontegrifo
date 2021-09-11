@@ -2,10 +2,12 @@ body {
 	font-family: $regular;
 }
 .favourite {
-	background-color: $orange;
+	background-color: $red;
 	color: $grey;
+
 }
 .estandar {
 	background-color: $grey;
 	color: $mediumBlue;
+	border: 2px solid $mediumBlue;
 }

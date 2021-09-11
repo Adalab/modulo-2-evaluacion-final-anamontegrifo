@@ -132,7 +132,8 @@ a {
 .main {
   display: flex;
   flex-direction: column;
-  margin-top: 160px; }
+  margin-top: 160px;
+  margin-bottom: 60px; }
   @media all and (min-width: 768px) {
     .main {
       display: flex;
@@ -143,12 +144,13 @@ body {
   font-family: "Urbanist", sans-serif; }
 
 .favourite {
-  background-color: #EE6F57;
+  background-color: #F8485E;
   color: #F6F5F5; }
 
 .estandar {
   background-color: #F6F5F5;
-  color: #145374; }
+  color: #145374;
+  border: 2px solid #145374; }
 
 .header {
   display: flex;
@@ -188,7 +190,7 @@ body {
   .header__btn {
     border: none;
     border-radius: 5px;
-    background-color: #EE6F57;
+    background-color: #F8485E;
     height: 25px;
     color: #F6F5F5; }
   @media all and (min-width: 768px) {
@@ -233,7 +235,7 @@ body {
   -moz-column-gap: 20px;
   column-gap: 20px;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 10px;
   border-radius: 10px; }
   .found-list__card {
@@ -242,15 +244,15 @@ body {
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    border: 2px solid #00334E;
+    border-radius: 10px;
     margin: 10px 0;
-    padding: 10px;
+    padding: 20px 15px 10px 15px;
     width: 200px;
     height: 300px; }
   .found-list__image {
     width: 150px; }
   .found-list__title {
-    font-size: 18px; }
+    font-size: 16px; }
   @media all and (min-width: 768px) {
     .found-list {
       -moz-column-gap: 20px;

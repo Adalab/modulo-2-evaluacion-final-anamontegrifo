@@ -16,9 +16,7 @@ function handleFavCards(event) {
 	}
 
 	setLS();
-
 	AddContentFavCards();
-
 	addCards();
 }
 
@@ -53,9 +51,4 @@ function AddContentFavCards() {
 	listenToTheCards();
 }
 
-// function reset() {
-// 	console.log(favContainer.innerHTML);
-// 	if (favContainer.innerHTML !== '') {
-// 	}
-// }
-// resetBtn.addEventListener('click', reset);
+//<i class="fas fa-heart"></i>

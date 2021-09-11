@@ -124,9 +124,7 @@ function handleFavCards(event) {
 	}
 
 	setLS();
-
 	AddContentFavCards();
-
 	addCards();
 }
 
@@ -161,12 +159,7 @@ function AddContentFavCards() {
 	listenToTheCards();
 }
 
-// function reset() {
-// 	console.log(favContainer.innerHTML);
-// 	if (favContainer.innerHTML !== '') {
-// 	}
-// }
-// resetBtn.addEventListener('click', reset);
+//<i class="fas fa-heart"></i>
 
 function setLS() {
 	localStorage.setItem('favourites', JSON.stringify(favourites));
@@ -177,6 +170,18 @@ function getLS() {
 	AddContentFavCards();
 	addCards();
 }
+
+//Reset favourites
+
+console.log(favourites);
+function reset() {
+	favourites = [];
+	favContainer.innerHTML = '';
+	setLS();
+	addCards();
+	localStorage.clear();
+}
+resetBtn.addEventListener('click', reset);
 
 'use strict';
 

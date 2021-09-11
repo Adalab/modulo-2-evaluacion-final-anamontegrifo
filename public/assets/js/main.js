@@ -1,18 +1,32 @@
-const form = document.querySelector('.form');
+'use strict';
 
+//variables that get html elements
+const form = document.querySelector('.form');
+const inputSearch = document.querySelector('.js-inputSearch');
+const btnSearch = document.querySelector('.js-btnSearch');
+const listContainer = document.querySelector('.found-list');
+const favContainer = document.querySelector('.js-favlist');
+const favSection = document.querySelector('.js-fav');
+const resetBtn = document.querySelector('.js-reset');
+
+//Default image
+const defaultImage =
+	'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
+
+//variables to save arrays
+let series = [];
+let favourites = [];
+
+//retrieve saved data
+if (localStorage.getItem('favourites') !== null) {
+	getLS();
+}
+
+//Prevent default execution of the form
 function preventDefault(event) {
 	event.preventDefault();
 }
 form.addEventListener('submit', preventDefault);
-
-'use strict';
-
-//Search variables
-const inputSearch = document.querySelector('.js-inputSearch');
-const btnSearch = document.querySelector('.js-btnSearch');
-
-//variable to save the array
-let series = [];
 
 //Complete the url with the word searched
 function completeUrl() {
@@ -25,7 +39,6 @@ function completeUrl() {
 function getTheSearchResult() {
 	let url = completeUrl();
 
-	// listContainer.innerHTML = '';
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
@@ -37,11 +50,6 @@ function getTheSearchResult() {
 }
 
 btnSearch.addEventListener('click', getTheSearchResult);
-
-// List container element variable found
-const listContainer = document.querySelector('.found-list');
-const defaultImage =
-	'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
 function isFavourite(card) {
 	const favFound = favourites.find((fav) => {
@@ -98,13 +106,6 @@ function listenToTheCards() {
 	}
 }
 
-let favourites = [];
-
-// Fav elements variable found
-const favContainer = document.querySelector('.fav-list');
-const favSection = document.querySelector('.js-fav');
-const resetBtn = document.querySelector('.js-reset');
-
 //Add cards to favourites array
 function handleFavCards(event) {
 	const selectedCardId = parseInt(event.currentTarget.id);
@@ -121,16 +122,12 @@ function handleFavCards(event) {
 	} else {
 		favourites.splice(alreadyExist, 1);
 	}
-	AddContentFavCards();
-	addCards();
-	console.log(favourites);
-	setLocalStorage();
-}
 
-function setLocalStorage() {
-	const stringFav = JSON.stringify(favourites);
-	console.log(stringFav);
-	localStorage.setItem('favourites', stringFav);
+	setLS();
+
+	AddContentFavCards();
+
+	addCards();
 }
 
 //Add content to favourites section
@@ -170,6 +167,16 @@ function AddContentFavCards() {
 // 	}
 // }
 // resetBtn.addEventListener('click', reset);
+
+function setLS() {
+	localStorage.setItem('favourites', JSON.stringify(favourites));
+}
+
+function getLS() {
+	favourites = JSON.parse(localStorage.getItem('favourites'));
+	AddContentFavCards();
+	addCards();
+}
 
 'use strict';
 

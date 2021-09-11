@@ -1,5 +1,4 @@
-const form = document.querySelector('.form');
-
+//Prevent default execution of the form
 function preventDefault(event) {
 	event.preventDefault();
 }

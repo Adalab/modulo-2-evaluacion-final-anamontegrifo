@@ -1,10 +1,3 @@
-let favourites = [];
-
-// Fav elements variable found
-const favContainer = document.querySelector('.fav-list');
-const favSection = document.querySelector('.js-fav');
-const resetBtn = document.querySelector('.js-reset');
-
 //Add cards to favourites array
 function handleFavCards(event) {
 	const selectedCardId = parseInt(event.currentTarget.id);
@@ -21,16 +14,12 @@ function handleFavCards(event) {
 	} else {
 		favourites.splice(alreadyExist, 1);
 	}
-	AddContentFavCards();
-	addCards();
-	console.log(favourites);
-	setLocalStorage();
-}
 
-function setLocalStorage() {
-	const stringFav = JSON.stringify(favourites);
-	console.log(stringFav);
-	localStorage.setItem('favourites', stringFav);
+	setLS();
+
+	AddContentFavCards();
+
+	addCards();
 }
 
 //Add content to favourites section

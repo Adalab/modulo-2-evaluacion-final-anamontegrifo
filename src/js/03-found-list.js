@@ -1,8 +1,3 @@
-// List container element variable found
-const listContainer = document.querySelector('.found-list');
-const defaultImage =
-	'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
-
 function isFavourite(card) {
 	const favFound = favourites.find((fav) => {
 		return fav.show.id === card.show.id;

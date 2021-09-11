@@ -162,7 +162,7 @@ body {
   z-index: 999;
   width: 100vw;
   padding: 10px;
-  background-color: #00334E; }
+  background-color: #145374; }
   .header__identity {
     display: flex;
     align-items: flex-end;
@@ -198,33 +198,54 @@ body {
       align-items: flex-start;
       padding: 15px; } }
 
-.fav {
+.fav__menu {
   display: flex;
-  flex-direction: column; }
-  .fav__menu {
-    display: flex;
-    justify-content: space-around; }
-  .fav__title {
-    font-size: 20px;
-    color: #00334E; }
-  .fav__reset {
-    width: 30px;
-    height: 30px;
-    border-radius: 5px;
-    background-color: #145374;
-    color: #F6F5F5; }
+  justify-content: center;
+  align-items: center;
+  margin: 20px; }
+  @media all and (min-width: 768px) {
+    .fav__menu {
+      min-width: 200px;
+      align-items: flex-start; } }
+
+.fav__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px; }
+
+.fav__headline {
+  font-size: 22px;
+  color: #00334E;
+  margin-right: 10px; }
+
+.fav__reset {
+  border: none;
+  border-radius: 5px;
+  background-color: #F8485E;
+  height: 25px;
+  color: #F6F5F5; }
 
 .fav-list {
   display: flex;
   flex-direction: column; }
   .fav-list__card {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 2fr 5fr 1fr;
     align-items: center;
-    height: 140px; }
+    justify-content: flex-start;
+    height: 100px;
+    width: 220px; }
   .fav-list__image {
-    width: 60px;
-    border: 2px solid #EE6F57; }
+    width: 70px;
+    border: 4px solid #F8485E;
+    border-radius: 5px;
+    margin-right: 10px; }
+  .fav-list__title {
+    margin-right: 10px; }
+  .fav-list__icon {
+    color: #F8485E;
+    font-size: 20px; }
 
 .closed {
   display: none; }
@@ -235,7 +256,7 @@ body {
   -moz-column-gap: 20px;
   column-gap: 20px;
   justify-content: center;
-  align-items: flex-start;
+  align-content: flex-start;
   padding: 10px;
   border-radius: 10px; }
   .found-list__card {
@@ -252,7 +273,7 @@ body {
   .found-list__image {
     width: 150px; }
   .found-list__title {
-    font-size: 16px; }
+    font-size: 18px; }
   @media all and (min-width: 768px) {
     .found-list {
       -moz-column-gap: 20px;

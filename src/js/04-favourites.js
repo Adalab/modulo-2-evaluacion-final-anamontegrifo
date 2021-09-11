@@ -46,7 +46,7 @@ function AddContentFavCards() {
 	newList.classList.add('fav__menu', 'fav-list', 'js-favlist');
 
 	let newDiv = document.createElement('div');
-	newDiv.classList.add('fav-header');
+	newDiv.classList.add('fav__header');
 
 	let newH = document.createElement('h2');
 	newH.classList.add('fav__headline');
@@ -82,7 +82,10 @@ function AddContentFavCards() {
 		titleCard.appendChild(titleContent);
 
 		let iconCard = document.createElement('i');
-		iconCard.setAttribute('class', 'fas fa-times-circle js-icon');
+		iconCard.setAttribute(
+			'class',
+			'fas fa-times-circle fav-list__icon js-icon'
+		);
 		iconCard.id = card.show.id;
 		newCard.appendChild(imageCard);
 		newCard.appendChild(titleCard);

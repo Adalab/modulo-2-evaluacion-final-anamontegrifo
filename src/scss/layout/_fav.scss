@@ -7,6 +7,9 @@
 		@include tablet {
 			min-width: 200px;
 			align-items: flex-start;
+			border: 1px solid $mediumBlue;
+			padding: 10px;
+			border-radius: 5px;
 		}
 	}
 	&__header {

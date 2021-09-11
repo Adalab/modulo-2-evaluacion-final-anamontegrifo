@@ -208,7 +208,10 @@ body {
   @media all and (min-width: 768px) {
     .fav__menu {
       min-width: 200px;
-      align-items: flex-start; } }
+      align-items: flex-start;
+      border: 1px solid #145374;
+      padding: 10px;
+      border-radius: 5px; } }
 
 .fav__header {
   display: flex;

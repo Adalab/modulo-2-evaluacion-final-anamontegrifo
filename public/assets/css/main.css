@@ -131,10 +131,13 @@ a {
 
 .main {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-top: 100px; }
   @media all and (min-width: 768px) {
     .main {
-      flex-direction: row; } }
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 80px; } }
 
 body {
   font-family: "Urbanist", sans-serif; }
@@ -148,11 +151,30 @@ body {
   color: #145374; }
 
 .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100vw;
+  margin-bottom: 80px;
+  padding: 10px;
   background-color: #00334E; }
+  .header__identity {
+    display: flex;
+    align-items: flex-end; }
+  .header__logo {
+    height: 100px; }
   .header__title {
     font-family: "Tourney", cursive;
     font-size: 2rem;
     color: #F6F5F5; }
+  @media all and (min-width: 768px) {
+    .header {
+      align-items: flex-start;
+      height: 150px; } }
 
 .fav {
   display: flex;
@@ -187,7 +209,10 @@ body {
 
 .found-list {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  -moz-column-gap: 20px;
+  column-gap: 20px;
+  justify-content: center;
   align-items: center;
   padding: 10px;
   border-radius: 10px; }
@@ -208,10 +233,14 @@ body {
     font-size: 18px; }
   @media all and (min-width: 768px) {
     .found-list {
-      flex-direction: row;
-      justify-content: flex-start;
-      flex-wrap: wrap;
       -moz-column-gap: 20px;
       column-gap: 20px; } }
+
+.footer-section {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  background-color: #145374;
+  color: #F6F5F5; }
 
 /*# sourceMappingURL=main.css.map */

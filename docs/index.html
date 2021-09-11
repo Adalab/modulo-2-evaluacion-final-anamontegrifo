@@ -5,14 +5,55 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Tourney:wght@400;600&family=Urbanist:wght@400;700&display=swap"
+		rel="stylesheet">
 	<link rel="stylesheet" href="./assets/css/main.css" />
 	<title></title>
 </head>
 
 <body>
 
+	<header class="header">
+		<h1 class="header__title">Buscador de series</h1>
+		<form action="">
+			<input type="text" class="js-inputSearch" id="search" name="search" placeholder="Busca por título">
+			<input class="js-btnSearch" type="button" value="Busca">
+		</form>
+	</header>
+	<main class="main">
 
-	<script type="text/javascript" src="apuntes.js"></script>
+		<section class="js-fav fav">
+			<div class="fav__menu">
+				<h2 class="fav__title">Tus series favoritas</h2>
+				<button class="fav__reset js-reset"><i class="fas fa-trash-alt"></i></button>
+			</div>
+			<ul class="fav-list">
+			</ul>
+
+		</section>
+		<section class="found-list">
+			<!-- <div class="found-list__card">
+				<img class="found-list__image" src="https://via.placeholder.com/210x295/ffffff/666666/?text=TV" alt="">
+				<h2 class="found-list__title">Título</h2>
+			</div> -->
+
+		</section>
+
+
+
+	</main>
+	<footer>
+		<p>Evaluación final módulo Javascript</p>
+		<p>Ana Montegrifo</p>
+		<a href="https://github.com/Adalab/modulo-2-evaluacion-final-anamontegrifo">Repo en Github</a>
+	</footer>
+
+	<script type="text/javascript" src="./assets/js/main.js"></script>
 </body>
 
 </html>

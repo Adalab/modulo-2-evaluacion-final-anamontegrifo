@@ -1,8 +1,30 @@
 .header {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	width: 100vw;
+	margin-bottom: 80px;
+	padding: 10px;
 	background-color: $darkBlue;
-&__title{
-	font-family: $special;
-	font-size: 2rem;
-	color: $grey;
-}
+	&__identity {
+		display: flex;
+		align-items: flex-end;
+	}
+
+	&__logo {
+		height: 100px;
+	}
+	&__title {
+		font-family: $special;
+		font-size: 2rem;
+		color: $grey;
+	}
+	@include tablet {
+		align-items: flex-start;
+		height: 150px;
+	}
 }

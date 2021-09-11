@@ -1,6 +1,8 @@
 .found-list {
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
+	column-gap: 20px;
+	justify-content: center;
 	align-items: center;
 	padding: 10px;
 	border-radius: 10px;
@@ -25,9 +27,6 @@
 	}
 
 	@include tablet {
-		flex-direction: row;
-		justify-content:flex-start;
-		flex-wrap: wrap;
 		column-gap: 20px;
 	}
 }

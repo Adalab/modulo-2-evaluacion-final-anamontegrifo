@@ -19,10 +19,14 @@
 <body>
 
 	<header class="header">
-		<h1 class="header__title">Buscador de series</h1>
+		<div class="header__identity">
+			<img class="header__logo" src="./assets/images/tv-retro-01-01.png" alt="">
+			<h1 class="header__title">Buscador de series</h1>
+		</div>
+
 		<form action="">
-			<input type="text" class="js-inputSearch" id="search" name="search" placeholder="Busca por título">
-			<input class="js-btnSearch" type="button" value="Busca">
+			<input type="text" class="header__input js-inputSearch" id="search" name="search" placeholder="Busca por título">
+			<input class="header__btn js-btnSearch" type="button" value="Buscar">
 		</form>
 	</header>
 	<main class="main">
@@ -47,7 +51,7 @@
 
 
 	</main>
-	<footer>
+	<footer class="footer-section">
 		<p>Evaluación final módulo Javascript</p>
 		<p>Ana Montegrifo</p>
 		<a href="https://github.com/Adalab/modulo-2-evaluacion-final-anamontegrifo">Repo en Github</a>

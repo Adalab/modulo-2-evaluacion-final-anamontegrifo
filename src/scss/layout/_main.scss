@@ -1,10 +1,12 @@
 .main {
 	display: flex;
 	flex-direction: column;
+	margin-top: 100px;
 
 	@include tablet {
-
+		display: flex;
 		flex-direction: row;
+	
+		margin-bottom: 80px;
 	}
 }
-

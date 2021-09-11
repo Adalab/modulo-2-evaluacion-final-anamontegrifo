@@ -7,7 +7,6 @@ const btnSearch = document.querySelector('.js-btnSearch');
 const listContainer = document.querySelector('.found-list');
 const favContainer = document.querySelector('.js-favlist');
 const favSection = document.querySelector('.js-fav');
-const resetBtn = document.querySelector('.js-reset');
 
 //Default image
 const defaultImage =
@@ -130,7 +129,27 @@ function handleFavCards(event) {
 
 //Add content to favourites section
 function AddContentFavCards() {
-	favContainer.innerHTML = '';
+	favSection.innerHTML = '';
+
+	let newList = document.createElement('ul');
+	newList.classList.add('fav__menu', 'fav-list', 'js-favlist');
+
+	let newDiv = document.createElement('div');
+	newDiv.classList.add('fav-header');
+
+	let newH = document.createElement('h2');
+	newH.classList.add('fav__headline');
+	let hContent = document.createTextNode('Tus series favoritas');
+	newH.appendChild(hContent);
+
+	let newButton = document.createElement('input');
+	newButton.type = 'button';
+	newButton.value = 'Reset';
+	newButton.classList.add('fav__reset', 'js-reset');
+
+	newDiv.appendChild(newH);
+	newDiv.appendChild(newButton);
+	newList.appendChild(newDiv);
 
 	for (const card of favourites) {
 		let newCard = document.createElement('li');
@@ -153,7 +172,11 @@ function AddContentFavCards() {
 
 		newCard.appendChild(imageCard);
 		newCard.appendChild(titleCard);
-		favContainer.appendChild(newCard);
+		newList.appendChild(newCard);
+		favSection.appendChild(newList);
+
+		const resetBtn = document.querySelector('.js-reset');
+		resetBtn.addEventListener('click', reset);
 	}
 
 	listenToTheCards();
@@ -176,14 +199,11 @@ function getLS() {
 console.log(favourites);
 function reset() {
 	favourites = [];
-	favContainer.innerHTML = '';
+	favSection.innerHTML = '';
 	setLS();
 	addCards();
 	localStorage.clear();
 }
-resetBtn.addEventListener('click', reset);
-
-'use strict';
 
 
 //# sourceMappingURL=main.js.map

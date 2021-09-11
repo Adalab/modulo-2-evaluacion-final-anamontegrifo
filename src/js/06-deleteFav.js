@@ -3,9 +3,8 @@
 console.log(favourites);
 function reset() {
 	favourites = [];
-	favContainer.innerHTML = '';
+	favSection.innerHTML = '';
 	setLS();
 	addCards();
 	localStorage.clear();
 }
-resetBtn.addEventListener('click', reset);

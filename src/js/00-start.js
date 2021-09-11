@@ -7,7 +7,6 @@ const btnSearch = document.querySelector('.js-btnSearch');
 const listContainer = document.querySelector('.found-list');
 const favContainer = document.querySelector('.js-favlist');
 const favSection = document.querySelector('.js-fav');
-const resetBtn = document.querySelector('.js-reset');
 
 //Default image
 const defaultImage =

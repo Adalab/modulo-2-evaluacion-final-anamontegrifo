@@ -1,6 +1,6 @@
 'use strict';
 
-//variables that get html elements
+//Variables para hacer referencia a elementos de HTML
 const form = document.querySelector('.form');
 const inputSearch = document.querySelector('.js-inputSearch');
 const btnSearch = document.querySelector('.js-btnSearch');
@@ -8,48 +8,51 @@ const listContainer = document.querySelector('.found-list');
 const favContainer = document.querySelector('.js-favlist');
 const favSection = document.querySelector('.js-fav');
 
-//Default image
+//Imagen por defecto
 const defaultImage =
 	'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 
-//variables to save arrays
+//Variables para guardar los arrays
 let series = [];
 let favourites = [];
 
-//retrieve saved data
+//Para recuperar los datos guardados el localStorage
 if (localStorage.getItem('favourites') !== null) {
 	getLS();
 }
 
-//Prevent default execution of the form
+//Función para evitar que el formulario se ejecute
 function preventDefault(event) {
 	event.preventDefault();
 }
 form.addEventListener('submit', preventDefault);
 
-//Complete the url with the word searched
+//Función para completar la url con la búsqueda en el campo input.
 function completeUrl() {
 	let itemSearch = inputSearch.value;
 	let url = `//api.tvmaze.com/search/shows?q=${itemSearch}`;
 	return url;
 }
 
-//Function to save the search result
+//Función que engloba la consulta en la API, el guardado de resultado en el array "series" y el pintado en pantalla del resultado.
 function getTheSearchResult() {
 	let url = completeUrl();
 
+	//Función fetch para hacer la petición de información a la API sobre la búsqueda deseada (url) y guardar los datos devueltos en el array "series".
 	fetch(url)
 		.then((response) => response.json())
 		.then((data) => {
 			series = data;
 
-			//function to print the search data
+			///Función para añadir, con DOM Avanzado, la estructura y contenido en HTML del listado de series tras la búsqueda.
 			addCards();
 		});
 }
 
+//Listener sobre el botón "Buscar", que ejecuta la función anterior.
 btnSearch.addEventListener('click', getTheSearchResult);
 
+//Función que usa un método "find" y nos devuelve true o false si el id del elemento es encontrado en el array "favourites".
 function isFavourite(card) {
 	const favFound = favourites.find((fav) => {
 		return fav.show.id === card.show.id;
@@ -61,11 +64,13 @@ function isFavourite(card) {
 	}
 }
 
+//Función para añadir, con DOM Avanzado, la estructura y contenido en HTML del listado de series tras la búsqueda. Se ejecuta un bucle para que imprima cada uno de los elementos del array.
 function addCards() {
 	let favClass = '';
 	listContainer.innerHTML = '';
-
+	//Bucle para añadir contenido a la estructura de la sección de búsqueda.
 	for (const card of series) {
+		//Añadimos la clase correspondiente si el elemento está marcado como favorito o no
 		const isFav = isFavourite(card);
 
 		if (isFav) {
@@ -73,17 +78,20 @@ function addCards() {
 		} else {
 			favClass = 'estandar';
 		}
+		//Añadimos la estructura del HTML por cada elemento que pasa por el bucle
 		let newCard = document.createElement('div');
 		newCard.classList.add('found-list__card', 'js-foundCard', `${favClass}`);
 		newCard.id = card.show.id;
 		let imageCard = document.createElement('img');
 
+		//En el caso de que no haya imagen en el array, introducimos una imagen por defecto
 		if (card.show.image === null) {
 			imageCard.src =
 				'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
 		} else {
 			imageCard.src = card.show.image.medium;
 		}
+
 		imageCard.setAttribute('class', 'found-list__image');
 		let titleCard = document.createElement('h2');
 		titleCard.setAttribute('class', 'found-list__title');
@@ -94,10 +102,12 @@ function addCards() {
 		newCard.appendChild(titleCard);
 		listContainer.appendChild(newCard);
 	}
+
+	//Función que añade o saca las series "clickadas" del listado de favoritos
 	listenToTheCards();
 }
 
-//Listener function
+//Función listener sobre cada uno de los <div> de series que se generar en el bucle. Ejecuta la función para añadir o sacar del array de favoritos los elementos "clickados".
 function listenToTheCards() {
 	const listenedCards = document.querySelectorAll('.js-foundCard');
 	for (const eachCard of listenedCards) {
@@ -105,13 +115,15 @@ function listenToTheCards() {
 	}
 }
 
-//Add cards to favourites array
+//Función para añadir o sacar del array de favoritos los elementos "clickados". La llamamos desde un listener en un bucle que afecta a cada una de las tarjetas de series.
 function handleFavCards(event) {
+	//Función que nos devuelve el primer elemento (objeto) del array series que coincide con el id del elemento "clickado".
 	const selectedCardId = parseInt(event.currentTarget.id);
 	const clickedCard = series.find((card) => {
 		return card.show.id === selectedCardId;
 	});
 
+	//Función con la que detectamos si el elemento "clickado" ya está incluido en el array de favoritos a través de su posición en el array y los añadimos o sacamos.
 	const alreadyExist = favourites.findIndex((index) => {
 		return index.show.id === selectedCardId;
 	});
@@ -121,18 +133,23 @@ function handleFavCards(event) {
 	} else {
 		favourites.splice(alreadyExist, 1);
 	}
-
+	//Guardamos en local los datos del array de favoritos
 	setLS();
-	AddContentFavCards();
+	//Añadimos la estructura y contenido en HTML de la sección de series
 	addCards();
+	//Añadimos la estructura y contenido en HTML de la sección de favoritos
+	AddContentFavCards();
 }
 
+//Función para borrar del array de favoritos desde los iconos "x"
 function deleteFavIcons(event) {
+	//Función que nos devuelve el primer elemento (objeto) del array "favourites" que coincide con el id del icono "x" "clickado".
 	const selectedIconId = parseInt(event.currentTarget.id);
 	const clickedIcon = favourites.find((card) => {
 		return card.show.id === selectedIconId;
 	});
 
+	//Función con la que detectamos si el icono "x" "clickado" ya está incluido en el array de favoritos y lo sacamos.
 	const alreadyExist = favourites.findIndex((index) => {
 		return index.show.id === selectedIconId;
 	});
@@ -140,15 +157,20 @@ function deleteFavIcons(event) {
 	if (alreadyExist !== -1) {
 		favourites.splice(alreadyExist, 1);
 	}
+
+	//Guardamos en local los datos del array de favoritos
 	setLS();
-	AddContentFavCards();
+	//Añadimos la estructura y contenido en HTML de la sección de series
 	addCards();
+	//Añadimos la estructura y contenido en HTML de la sección de favoritos
+	AddContentFavCards();
 }
 
-//Add content to favourites section
+//Función con la que añadimos la estructura y contenido en HTML de la sección de favoritos
 function AddContentFavCards() {
 	favSection.innerHTML = '';
 
+	//Añadimos la estructura y cabecera
 	let newList = document.createElement('ul');
 	newList.classList.add('fav__menu', 'fav-list', 'js-favlist');
 
@@ -169,6 +191,7 @@ function AddContentFavCards() {
 	newDiv.appendChild(newButton);
 	newList.appendChild(newDiv);
 
+	//Añadimos el contenido de cada uno de los elementos en HTML que entran en el bucle
 	for (const card of favourites) {
 		let newCard = document.createElement('li');
 		newCard.classList.add('fav-list__card', 'js-favCard');
@@ -201,38 +224,37 @@ function AddContentFavCards() {
 		newList.appendChild(newCard);
 		favSection.appendChild(newList);
 
-		//Listener del reset
+		//Listener del reset, porque el elemento botón reset se ha creado dentro de esta función
 		const resetBtn = document.querySelector('.js-reset');
 		resetBtn.addEventListener('click', reset);
 
-		//Listener de borrar favoritos en los iconos
+		//Listener de borrar favoritos en los iconos, porque los iconos también se han generado dentro de esta función.
 		const favIcons = document.querySelectorAll('.js-icon');
 		for (const icon of favIcons) {
 			icon.addEventListener('click', deleteFavIcons);
 		}
 	}
-
+	//Llamamos a la función que añade o saca las series "clickadas" del listado de favoritos
 	listenToTheCards();
 }
 
+//Función para guardar en local los datos del array de favoritos
 function setLS() {
 	localStorage.setItem('favourites', JSON.stringify(favourites));
 }
 
+//Función para recuperar al array de favoritos los datos guardados en local.
 function getLS() {
 	favourites = JSON.parse(localStorage.getItem('favourites'));
+	//Función con la que mantenemos el HTML de la sección de favoritos
 	AddContentFavCards();
-	addCards();
 }
 
-//Reset favourites
-
+//Reseteamos la sección de favoritos vaciando la sección, vaciando el array y ejecutando la función principal que añade listado y clases de las series.
 function reset() {
-	favourites = [];
 	favSection.innerHTML = '';
-	setLS();
+	favourites = [];
 	addCards();
-	localStorage.clear();
 }
 
 

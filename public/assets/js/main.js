@@ -160,10 +160,10 @@ function AddContentFavCards() {
 	let hContent = document.createTextNode('Tus series favoritas');
 	newH.appendChild(hContent);
 
-	let newButton = document.createElement('input');
-	newButton.type = 'button';
-	newButton.value = 'Reset';
+	let newButton = document.createElement('button');
 	newButton.classList.add('fav__reset', 'js-reset');
+	let buttonContent = document.createTextNode('Reset');
+	newButton.appendChild(buttonContent);
 
 	newDiv.appendChild(newH);
 	newDiv.appendChild(newButton);

@@ -17,8 +17,6 @@ function handleGetSearchResult() {
 
 			///Función para añadir, con DOM Avanzado, la estructura y contenido en HTML del listado de series tras la búsqueda.
 			addCards();
-			//Función para guardar en local los datos del array de favoritos
-			// setLS();
 		});
 }
 

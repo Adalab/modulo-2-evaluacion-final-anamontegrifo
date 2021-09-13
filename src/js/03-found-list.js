@@ -30,7 +30,7 @@ function addCards() {
 		newCard.id = card.show.id;
 		let imageCard = document.createElement('img');
 
-		//En el caso de que no haya imagen en el array, introducimos una imagen por defecto
+		//En el caso de que no haya imagen en el elemento del array, introducimos una imagen por defecto
 		if (card.show.image === null) {
 			imageCard.src =
 				'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';

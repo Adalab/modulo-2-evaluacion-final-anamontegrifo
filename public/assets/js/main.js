@@ -44,8 +44,6 @@ function handleGetSearchResult() {
 
 			///Función para añadir, con DOM Avanzado, la estructura y contenido en HTML del listado de series tras la búsqueda.
 			addCards();
-			//Función para guardar en local los datos del array de favoritos
-			// setLS();
 		});
 }
 
@@ -84,7 +82,7 @@ function addCards() {
 		newCard.id = card.show.id;
 		let imageCard = document.createElement('img');
 
-		//En el caso de que no haya imagen en el array, introducimos una imagen por defecto
+		//En el caso de que no haya imagen en el elemento del array, introducimos una imagen por defecto
 		if (card.show.image === null) {
 			imageCard.src =
 				'https://via.placeholder.com/210x295/ffffff/666666/?text=TV';
@@ -142,7 +140,7 @@ function handleFavCards(event) {
 }
 
 //Función para borrar del array de favoritos desde los iconos "x"
-function deleteFavIcons(event) {
+function handleDeleteFavIcons(event) {
 	//Función que nos devuelve el primer elemento (objeto) del array "favourites" que coincide con el id del icono "x" "clickado".
 	const selectedIconId = parseInt(event.currentTarget.id);
 	const clickedIcon = favourites.find((card) => {
@@ -224,18 +222,23 @@ function AddContentFavCards() {
 		newList.appendChild(newCard);
 		favSection.appendChild(newList);
 
-		//Listener del reset, porque el elemento botón reset se ha creado dentro de esta función
+		//Listener del botón reset que se ha creado dentro de esta función
 		const resetBtn = document.querySelector('.js-reset');
 		resetBtn.addEventListener('click', reset);
-
-		//Listener de borrar favoritos en los iconos, porque los iconos también se han generado dentro de esta función.
-		const favIcons = document.querySelectorAll('.js-icon');
-		for (const icon of favIcons) {
-			icon.addEventListener('click', deleteFavIcons);
-		}
 	}
+
 	//Llamamos a la función que añade o saca las series "clickadas" del listado de favoritos
 	listenToTheCards();
+	//Llamamos a la función que, sobre los iconos "x", borra los elementos de la lista de favoritos
+	listenToTheFavs();
+}
+
+//Listener sobre los iconos "x" generados en la anterior función. Elimina los favoritos que desmarquemos.
+function listenToTheFavs() {
+	const favIcons = document.querySelectorAll('.js-icon');
+	for (const icon of favIcons) {
+		icon.addEventListener('click', handleDeleteFavIcons);
+	}
 }
 
 //Función para guardar en local los datos del array de favoritos

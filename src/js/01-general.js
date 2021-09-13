@@ -16,10 +16,8 @@ const defaultImage =
 let series = [];
 let favourites = [];
 
-//Para comprobar que favoritos está vacío y añadir el contenido del localStorage
-if (localStorage.getItem('favourites') !== null) {
-	getLS();
-}
+// Función para comprobar de inicio si tenemos información de los favoritos en local y recuperarla.
+getLS();
 
 //Función para evitar que el formulario se ejecute
 function preventDefault(event) {

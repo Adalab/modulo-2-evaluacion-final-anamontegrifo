@@ -17,6 +17,7 @@ function handleGetSearchResult() {
 
 			///Función para añadir, con DOM Avanzado, la estructura y contenido en HTML del listado de series tras la búsqueda.
 			addCards();
+			setLS();
 		});
 }
 

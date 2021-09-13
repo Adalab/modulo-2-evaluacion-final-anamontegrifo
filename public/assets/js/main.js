@@ -16,10 +16,8 @@ const defaultImage =
 let series = [];
 let favourites = [];
 
-//Para comprobar que favoritos está vacío y añadir el contenido del localStorage
-if (localStorage.getItem('favourites') !== null) {
-	getLS();
-}
+// Función para comprobar de inicio si tenemos información de los favoritos en local y recuperarla.
+getLS();
 
 //Función para evitar que el formulario se ejecute
 function preventDefault(event) {
@@ -46,6 +44,7 @@ function handleGetSearchResult() {
 
 			///Función para añadir, con DOM Avanzado, la estructura y contenido en HTML del listado de series tras la búsqueda.
 			addCards();
+			setLS();
 		});
 }
 
@@ -240,13 +239,23 @@ function AddContentFavCards() {
 
 //Función para guardar en local los datos del array de favoritos
 function setLS() {
-	localStorage.setItem('favourites', JSON.stringify(favourites));
+	const stringFav = JSON.stringify(favourites);
+	localStorage.setItem('favourites', stringFav);
 }
 
 //Función para recuperar al array de favoritos los datos guardados en local.
 function getLS() {
-	favourites = JSON.parse(localStorage.getItem('favourites'));
-	//Función con la que mantenemos el HTML de la sección de favoritos
+	const localStorageFav = localStorage.getItem('favourites');
+
+	if (localStorageFav === null) {
+		handleGetSearchResult();
+	} else {
+		const arrayFav = JSON.parse(localStorageFav);
+		favourites = arrayFav;
+	}
+	//Función con la que mantenemos la estructura de la sección de series
+	addCards();
+	//Función con la que mantenemos la estructura de la sección de favoritos
 	AddContentFavCards();
 }
 

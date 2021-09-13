@@ -6,7 +6,7 @@ function completeUrl() {
 }
 
 //Función que engloba la consulta en la API, el guardado de resultado en el array "series" y el pintado en pantalla del resultado.
-function getTheSearchResult() {
+function handleGetSearchResult() {
 	let url = completeUrl();
 
 	//Función fetch para hacer la petición de información a la API sobre la búsqueda deseada (url) y guardar los datos devueltos en el array "series".
@@ -21,4 +21,4 @@ function getTheSearchResult() {
 }
 
 //Listener sobre el botón "Buscar", que ejecuta la función anterior.
-btnSearch.addEventListener('click', getTheSearchResult);
+btnSearch.addEventListener('click', handleGetSearchResult);

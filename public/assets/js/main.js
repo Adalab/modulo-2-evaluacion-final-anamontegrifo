@@ -16,7 +16,7 @@ const defaultImage =
 let series = [];
 let favourites = [];
 
-//Para recuperar los datos guardados el localStorage
+//Para comprobar que favoritos está vacío y añadir el contenido del localStorage
 if (localStorage.getItem('favourites') !== null) {
 	getLS();
 }
@@ -35,7 +35,7 @@ function completeUrl() {
 }
 
 //Función que engloba la consulta en la API, el guardado de resultado en el array "series" y el pintado en pantalla del resultado.
-function getTheSearchResult() {
+function handleGetSearchResult() {
 	let url = completeUrl();
 
 	//Función fetch para hacer la petición de información a la API sobre la búsqueda deseada (url) y guardar los datos devueltos en el array "series".
@@ -50,7 +50,7 @@ function getTheSearchResult() {
 }
 
 //Listener sobre el botón "Buscar", que ejecuta la función anterior.
-btnSearch.addEventListener('click', getTheSearchResult);
+btnSearch.addEventListener('click', handleGetSearchResult);
 
 //Función que usa un método "find" y nos devuelve true o false si el id del elemento es encontrado en el array "favourites".
 function isFavourite(card) {

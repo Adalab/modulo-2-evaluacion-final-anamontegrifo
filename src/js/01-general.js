@@ -16,7 +16,7 @@ const defaultImage =
 let series = [];
 let favourites = [];
 
-//Para recuperar los datos guardados el localStorage
+//Para comprobar que favoritos está vacío y añadir el contenido del localStorage
 if (localStorage.getItem('favourites') !== null) {
 	getLS();
 }

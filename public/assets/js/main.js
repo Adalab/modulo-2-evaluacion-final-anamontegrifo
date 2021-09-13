@@ -44,14 +44,15 @@ function handleGetSearchResult() {
 
 			///Función para añadir, con DOM Avanzado, la estructura y contenido en HTML del listado de series tras la búsqueda.
 			addCards();
-			setLS();
+			//Función para guardar en local los datos del array de favoritos
+			// setLS();
 		});
 }
 
 //Listener sobre el botón "Buscar", que ejecuta la función anterior.
 btnSearch.addEventListener('click', handleGetSearchResult);
 
-//Función que usa un método "find" y nos devuelve true o false si el id del elemento es encontrado en el array "favourites".
+//Función que usa un método "find" y nos devuelve true si el id del elemento es encontrado en el array "favourites".
 function isFavourite(card) {
 	const favFound = favourites.find((fav) => {
 		return fav.show.id === card.show.id;

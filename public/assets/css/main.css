@@ -224,7 +224,7 @@ body {
   margin: 20px; }
   @media all and (min-width: 768px) {
     .fav__menu {
-      min-width: 200px;
+      min-width: 250px;
       align-items: flex-start;
       border: 1px solid #145374;
       padding: 10px;
@@ -237,7 +237,7 @@ body {
   margin-bottom: 15px; }
 
 .fav__headline {
-  font-size: 22px;
+  font-size: 20px;
   color: #00334E;
   margin-right: 10px; }
 

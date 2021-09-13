@@ -1,4 +1,4 @@
-//Función que usa un método "find" y nos devuelve true o false si el id del elemento es encontrado en el array "favourites".
+//Función que usa un método "find" y nos devuelve true si el id del elemento es encontrado en el array "favourites".
 function isFavourite(card) {
 	const favFound = favourites.find((fav) => {
 		return fav.show.id === card.show.id;

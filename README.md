@@ -27,11 +27,7 @@ npm start
 
 Esto tendrás que hacerlo cada vez que te pongas a programar. Después de esto puedes empezar a editar los ficheros dentro de la carpeta `src/`
 
-Los siguientes pasos puedes consultarlos en los vídeotutoriales de **Adalab**:
-
-- [Qué es, trabajar con la versión de desarrollo y rutas relativas](https://www.youtube.com/watch?v=XwvhXvBijos)
-- [Migración de un proyecto, trabajar con la versión de producción y GitHub Pages](https://www.youtube.com/watch?v=qqGClcgt9Uc)
-- [Motor de plantillas](https://www.youtube.com/watch?v=4GwXOJ045Zg)
+Los siguientes pasos puedes consultarlos en los vídeotutoriales de [**Adalab**](https://www.youtube.com/c/Adalab)
 
 ### Estructura del proyecto
 
@@ -63,8 +59,4 @@ src
 - Node.js
 - Markdown
 - Gulp
-  -Javascript
-
-```
-
-```
+- Javascript

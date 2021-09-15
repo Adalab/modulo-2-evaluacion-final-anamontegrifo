@@ -95,9 +95,16 @@ function addCards() {
 		titleCard.setAttribute('class', 'found-list__title');
 		let titleContent = document.createTextNode(card.show.name);
 		titleCard.appendChild(titleContent);
+
+		let scheduleCard = document.createElement('p');
+		let scheduleContent = document.createTextNode(card.show.schedule.days);
+		scheduleCard.appendChild(scheduleContent);
+
 		newCard.appendChild(imageCard);
 		listContainer.appendChild(newCard);
 		newCard.appendChild(titleCard);
+		listContainer.appendChild(newCard);
+		newCard.appendChild(scheduleCard);
 		listContainer.appendChild(newCard);
 	}
 
@@ -231,6 +238,8 @@ function AddContentFavCards() {
 	listenToTheCards();
 	//Llamamos a la función que, sobre los iconos "x", borra los elementos de la lista de favoritos
 	listenToTheFavs();
+
+	listenName();
 }
 
 //Listener sobre los iconos "x" generados en la anterior función. Elimina los favoritos que desmarquemos.
@@ -238,6 +247,24 @@ function listenToTheFavs() {
 	const favIcons = document.querySelectorAll('.js-icon');
 	for (const icon of favIcons) {
 		icon.addEventListener('click', handleDeleteFavIcons);
+	}
+}
+
+function consoleFav(ev) {
+	console.log(ev.currentTarget);
+	console.log(ev.target);
+
+	const selectedCardId = parseInt(ev.currentTarget.id);
+	const clickedCard = favourites.find((card) => {
+		return card.show.id === selectedCardId;
+	});
+	console.log(clickedCard.show.name);
+}
+
+function listenName() {
+	const favName = document.querySelectorAll('.js-favCard');
+	for (const favN of favName) {
+		favN.addEventListener('click', consoleFav);
 	}
 }
 

@@ -43,9 +43,16 @@ function addCards() {
 		titleCard.setAttribute('class', 'found-list__title');
 		let titleContent = document.createTextNode(card.show.name);
 		titleCard.appendChild(titleContent);
+
+		let scheduleCard = document.createElement('p');
+		let scheduleContent = document.createTextNode(card.show.schedule.days);
+		scheduleCard.appendChild(scheduleContent);
+
 		newCard.appendChild(imageCard);
 		listContainer.appendChild(newCard);
 		newCard.appendChild(titleCard);
+		listContainer.appendChild(newCard);
+		newCard.appendChild(scheduleCard);
 		listContainer.appendChild(newCard);
 	}
 
